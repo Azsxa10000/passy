@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6jmea25tctnm"]
+
+[ext_resource type="Script" path="res://UI/debug_menu.gd" id="1_2ct3v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6mjfh"]
+font_size = 24
+
+[node name="DebugMenu" type="Control" node_paths=PackedStringArray("velocity_label") groups=["DebugMenu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ct3v")
+velocity_label = NodePath("Panel/VBoxContainer/Velocity")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 787.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -303.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Debug Menu" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Debug Menu
+"
+label_settings = SubResource("LabelSettings_6mjfh")
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Velocity" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Velocity: ##.####
+Length: Vector3(##,##,##)"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2

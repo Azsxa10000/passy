@@ -1,3 +1,4 @@
+class_name BaseCharacter
 extends CharacterBody3D
 
 const _max_possible_velocity := Globals.max_possible_velocity ## Max possible velocity in meters per second
