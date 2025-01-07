@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://b7tu41b6wityq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lfceu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20pda"]
+albedo_color = Color(0.776471, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ic2gc"]
+material = SubResource("StandardMaterial3D_20pda")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nn72"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f47kd"]
+material = SubResource("StandardMaterial3D_7nn72")
+size = Vector3(0.83, 0.17, 0.16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvti0"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3j1el"]
+material = SubResource("StandardMaterial3D_dvti0")
+size = Vector3(0.14, 0.945, 0.135)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wysr2"]
+albedo_color = Color(0.125911, 0.125911, 0.125911, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6yy8j"]
+material = SubResource("StandardMaterial3D_wysr2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chcxm"]
+albedo_color = Color(0.255659, 0.255659, 0.255659, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s72vj"]
+material = SubResource("StandardMaterial3D_chcxm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwa43"]
+albedo_color = Color(0.442911, 0.442911, 0.442911, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wkmty"]
+material = SubResource("StandardMaterial3D_uwa43")
+top_radius = 0.0
+radial_segments = 6
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bb6ma"]
+albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_snwgo"]
+material = SubResource("StandardMaterial3D_bb6ma")
+
+[node name="Gun boy" type="CharacterBody3D"]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_lfceu")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ic2gc")
+
+[node name="Visor" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541444, 0.478348)
+mesh = SubResource("BoxMesh_f47kd")
+
+[node name="Gun" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.32, 0, 0, 0, -5.7699e-08, -1.32, 0, 1.32, -5.7699e-08, -0.64275, 0.150129, 0.332783)
+mesh = SubResource("BoxMesh_3j1el")
+
+[node name="Barrel" type="MeshInstance3D" parent="Gun"]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0.536719, -2.23517e-08)
+mesh = SubResource("CylinderMesh_6yy8j")
+
+[node name="Scope" type="MeshInstance3D" parent="Gun"]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 2.22045e-16, 0, -2.22045e-16, 0.065, -0.000475407, 0.0783106, -0.130238)
+mesh = SubResource("CylinderMesh_6yy8j")
+skeleton = NodePath("")
+
+[node name="Stand" type="MeshInstance3D" parent="Gun/Scope"]
+transform = Transform3D(0.685, 0, -2.99423e-08, -2.99423e-08, 1.30882e-15, -0.685, 0, 0.685, 1.30882e-15, 0, -9.53674e-07, 0.90068)
+mesh = SubResource("CylinderMesh_s72vj")
+
+[node name="Shoulder thing" type="MeshInstance3D" parent="Gun"]
+transform = Transform3D(0.245, -3.72529e-09, 2.91038e-10, 1.86265e-08, 0.245, 2.79397e-09, -5.82077e-11, -4.65661e-09, 0.245, -0.00186288, -0.3847, 0.00813461)
+mesh = SubResource("CylinderMesh_wkmty")
+
+[node name="Handle" type="MeshInstance3D" parent="Gun"]
+transform = Transform3D(0.06, 0, 0, 0, -2.62268e-09, -0.06, 0, 0.06, -2.62268e-09, 0, -0.227065, 0.119065)
+mesh = SubResource("CylinderMesh_snwgo")
+
+[node name="Other Gun" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.32, 0, 0, 0, -5.7699e-08, -1.32, 0, 1.32, -5.7699e-08, 0.647272, 0.150129, 0.332783)
+mesh = SubResource("BoxMesh_3j1el")
+
+[node name="Barrel" type="MeshInstance3D" parent="Other Gun"]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0.536719, -2.23517e-08)
+mesh = SubResource("CylinderMesh_6yy8j")
+
+[node name="Scope" type="MeshInstance3D" parent="Other Gun"]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 2.22045e-16, 0, -2.22045e-16, 0.065, -0.000475407, 0.0783106, -0.130238)
+mesh = SubResource("CylinderMesh_6yy8j")
+skeleton = NodePath("")
+
+[node name="Stand" type="MeshInstance3D" parent="Other Gun/Scope"]
+transform = Transform3D(0.685, 0, -2.99423e-08, -2.99423e-08, 1.30882e-15, -0.685, 0, 0.685, 1.30882e-15, 0, -9.53674e-07, 0.90068)
+mesh = SubResource("CylinderMesh_s72vj")
+
+[node name="Shoulder thing" type="MeshInstance3D" parent="Other Gun"]
+transform = Transform3D(0.245, -3.72529e-09, 2.91038e-10, 1.86265e-08, 0.245, 2.79397e-09, -5.82077e-11, -4.65661e-09, 0.245, -0.00186288, -0.3847, 0.00813461)
+mesh = SubResource("CylinderMesh_wkmty")
+
+[node name="Handle" type="MeshInstance3D" parent="Other Gun"]
+transform = Transform3D(0.06, 0, 0, 0, -2.62268e-09, -0.06, 0, 0.06, -2.62268e-09, 0, -0.227065, 0.119065)
+mesh = SubResource("CylinderMesh_snwgo")

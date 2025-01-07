@@ -1,7 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cxotw8dr4wc7k"]
 
 [ext_resource type="PackedScene" uid="uid://c6jmea25tctnm" path="res://UI/debug_menu.tscn" id="1_6f4wk"]
-[ext_resource type="Texture2D" uid="uid://cnmmto0ya4mo3" path="res://prototype/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_lkil6"]
 [ext_resource type="PackedScene" uid="uid://d1x66e8s7vwp8" path="res://Characters/player_character.tscn" id="2_mnrcl"]
 [ext_resource type="Script" path="res://World/kill_floor.gd" id="3_j3le1"]
 
@@ -69,8 +68,11 @@ fog_height = -370.12
 volumetric_fog_density = 0.1
 volumetric_fog_length = 10.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hyygt"]
+load_path = "res://.godot/imported/texture_01.png-1ba2d6b3dacc98a4b3bfcf43921a74dd.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqgba"]
-albedo_texture = ExtResource("1_lkil6")
+albedo_texture = SubResource("CompressedTexture2D_hyygt")
 uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6l01"]
