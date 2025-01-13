@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://sxnkr8khm3wf"]
+[gd_scene load_steps=5 format=3 uid="uid://sxnkr8khm3wf"]
 
 [ext_resource type="Script" path="res://Characters/base_character_body.gd" id="1_xceia"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_an1ah"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nyawi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0035c"]
+material = SubResource("StandardMaterial3D_nyawi")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pap2e"]
 
@@ -10,11 +13,11 @@
 
 [node name="BaseCharacterBody" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
 script = ExtResource("1_xceia")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BaseCharacterBody"]
-mesh = SubResource("CapsuleMesh_an1ah")
-skeleton = NodePath("../..")
+mesh = SubResource("CapsuleMesh_0035c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BaseCharacterBody"]
 shape = SubResource("CapsuleShape3D_pap2e")

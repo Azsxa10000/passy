@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1x66e8s7vwp8"]
+
+[ext_resource type="PackedScene" uid="uid://sxnkr8khm3wf" path="res://Characters/base_character.tscn" id="1_4wfrc"]
+[ext_resource type="Script" path="res://Characters/player/player_character.gd" id="2_fg1pu"]
+[ext_resource type="Script" path="res://Characters/player/camera_rig.gd" id="3_8wtiq"]
+[ext_resource type="Script" path="res://Characters/player/shadow_cast.gd" id="4_oybgq"]
+[ext_resource type="Texture2D" uid="uid://b7ywd6806w2gb" path="res://Assets/Shadow.png" id="5_b7mfv"]
+
+[node name="PlayerCharacter" instance=ExtResource("1_4wfrc")]
+
+[node name="BaseCharacterBody" parent="." index="0" groups=["PlayerCharacterBody"]]
+script = ExtResource("2_fg1pu")
+max_speed = 6.0
+max_sprint_speed = 10.0
+acceleration = 10.0
+jump_height = 3.0
+jump_peak_time = 0.35
+fall_time = 0.3
+max_coyote_time_frames = 8
+
+[node name="MeshInstance3D" parent="BaseCharacterBody" index="0"]
+layers = 2
+cast_shadow = 0
+
+[node name="CameraRig" type="Node3D" parent="BaseCharacterBody" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.320212, 0)
+script = ExtResource("3_8wtiq")
+
+[node name="Camera3D" type="Camera3D" parent="BaseCharacterBody/CameraRig" index="0"]
+
+[node name="ShadowCast" type="RayCast3D" parent="BaseCharacterBody" index="3"]
+target_position = Vector3(0, -25, 0)
+script = ExtResource("4_oybgq")
+
+[node name="Shadow" type="Decal" parent="BaseCharacterBody/ShadowCast" index="0"]
+transform = Transform3D(0.999833, 0, 0, 0, 0.999833, 0, 0, 0, 0.999833, 0, 0, 0.902861)
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("5_b7mfv")
+modulate = Color(1, 1, 1, 0.34902)
+distance_fade_enabled = true
+distance_fade_begin = 3.0
+distance_fade_length = 25.0
+cull_mask = 1047553
