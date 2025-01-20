@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://p1yra1lmvlg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4ekc"]
+albedo_color = Color(0.207438, 0.259732, 0.359152, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3in50"]
+material = SubResource("StandardMaterial3D_v4ekc")
+size = Vector3(1.275, 0.35, 1.445)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87t2c"]
+albedo_color = Color(0.178556, 0.348153, 0.490437, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r0h40"]
+material = SubResource("StandardMaterial3D_87t2c")
+top_radius = 0.1
+bottom_radius = 0.165
+height = 0.375
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxs2b"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_no3yo"]
+material = SubResource("StandardMaterial3D_mxs2b")
+size = Vector3(0.83, 0.17, 0.16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g21gh"]
+size = Vector3(1.275, 0.35, 1.445)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u4s4"]
+albedo_color = Color(0.321728, 0.321728, 0.321728, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gqyn3"]
+material = SubResource("StandardMaterial3D_7u4s4")
+height = 0.065
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87py3"]
+albedo_color = Color(0.54099, 0.54099, 0.54099, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_igs7d"]
+material = SubResource("StandardMaterial3D_87py3")
+top_radius = 0.045
+bottom_radius = 0.045
+height = 0.16
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n1ct"]
+albedo_color = Color(0.377919, 0.377919, 0.377919, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_abbcf"]
+material = SubResource("StandardMaterial3D_7n1ct")
+size = Vector3(0.155, 0.15, 0.4)
+
+[node name="Drone" type="CharacterBody3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.130672, 0)
+mesh = SubResource("BoxMesh_3in50")
+
+[node name="Thrusters" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.808115, -0.273259, 0.547087)
+mesh = SubResource("CylinderMesh_r0h40")
+skeleton = NodePath("../..")
+
+[node name="Thruster" type="MeshInstance3D" parent="Body/Thrusters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6139, 0, 0)
+mesh = SubResource("CylinderMesh_r0h40")
+skeleton = NodePath("../../..")
+
+[node name="Thruster2" type="MeshInstance3D" parent="Body/Thrusters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6171, 0, -1.08628)
+mesh = SubResource("CylinderMesh_r0h40")
+skeleton = NodePath("../../..")
+
+[node name="Thruster3" type="MeshInstance3D" parent="Body/Thrusters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.89301e-05, 0, -1.08628)
+mesh = SubResource("CylinderMesh_r0h40")
+skeleton = NodePath("../../..")
+
+[node name="Visor" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.781581)
+mesh = SubResource("BoxMesh_no3yo")
+skeleton = NodePath("../..")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.130222, 0)
+shape = SubResource("BoxShape3D_g21gh")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.331211, 0.0271076)
+mesh = SubResource("CylinderMesh_gqyn3")
+
+[node name="Stand" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102708, 0)
+mesh = SubResource("CylinderMesh_igs7d")
+
+[node name="Cannon" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 0.951428, 0.307871, 0, -0.307871, 0.951428, 0, 0.272746, 0.0838661)
+mesh = SubResource("BoxMesh_abbcf")

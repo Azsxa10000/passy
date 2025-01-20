@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://bsc4f5os7rfck"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_75x1r"]
+height = 2.35887
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhutv"]
+albedo_color = Color(0.776471, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6st5x"]
+material = SubResource("StandardMaterial3D_bhutv")
+height = 1.16
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nn72"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f47kd"]
+material = SubResource("StandardMaterial3D_7nn72")
+size = Vector3(0.83, 0.17, 0.16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rtkv"]
+albedo_color = Color(0, 0.132928, 0.134939, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jlrg4"]
+material = SubResource("StandardMaterial3D_1rtkv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_knqkw"]
+albedo_color = Color(0, 0.133333, 0.133333, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1eqnr"]
+material = SubResource("StandardMaterial3D_knqkw")
+size = Vector3(0.75, 0.805, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1uve"]
+albedo_color = Color(0, 0.133333, 0.133333, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mdyes"]
+material = SubResource("StandardMaterial3D_c1uve")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2d5x"]
+albedo_color = Color(0.776471, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_363yp"]
+material = SubResource("StandardMaterial3D_a2d5x")
+size = Vector3(0.425, 0.555, 0.39)
+
+[node name="Juggernaut" type="CharacterBody3D"]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.282911, 0)
+shape = SubResource("CapsuleShape3D_75x1r")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91162, 0)
+mesh = SubResource("CapsuleMesh_6st5x")
+
+[node name="Visor" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24695, 0.422605)
+mesh = SubResource("BoxMesh_f47kd")
+skeleton = NodePath("../../Upper torso/Waist")
+
+[node name="Upper torso" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30566, 0)
+mesh = SubResource("BoxMesh_jlrg4")
+
+[node name="Waist" type="MeshInstance3D" parent="Upper torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.781835, 0)
+mesh = SubResource("BoxMesh_1eqnr")
+skeleton = NodePath("../..")
+
+[node name="Right" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.442502, 0.158404, 0, -0.158404, 0.442502, 0, 0, 0, 0.47, -0.749099, 0.609168, 0)
+mesh = SubResource("BoxMesh_mdyes")
+
+[node name="Bisep" type="MeshInstance3D" parent="Right"]
+transform = Transform3D(2.00318, -0.717084, 0, 0.717084, 2.00318, 0, 0, 0, 2.12766, 0.168333, -1.14325, 0)
+mesh = SubResource("BoxMesh_363yp")
+skeleton = NodePath("../..")
+
+[node name="Left" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.442491, -0.158435, 0, 0.158435, 0.442491, 0, 0, 0, 0.47, 0.749, 0.609, 0)
+mesh = SubResource("BoxMesh_mdyes")
+
+[node name="Bisep2" type="MeshInstance3D" parent="Left"]
+transform = Transform3D(2.00313, 0.717224, 0, -0.717224, 2.00313, 0, 0, 0, 2.12766, -0.167228, -1.14241, 0)
+mesh = SubResource("BoxMesh_363yp")
+skeleton = NodePath("../..")
